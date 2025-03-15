@@ -15,3 +15,5 @@
 5. Download processed image as @facebook-2-hash.jpg from Facebook
 6. Extract metadata from @facebook-2-hash.jpg
 7. Compare pre/post upload metadata using compare-json.py
+
+
