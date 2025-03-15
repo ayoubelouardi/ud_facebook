@@ -1,0 +1,54 @@
+#!/bin/bash
+
+# Function to process files and generate HTML and JSON output
+process_images() {
+  local directory="$1"
+
+  # Check if the directory exists
+  if [ ! -d "$directory" ]; then
+    echo "Error: Directory '$directory' does not exist." >&2
+    return 1
+  fi
+
+  # Loop through each file in the directory
+  find "$directory" -type f -print0 | while IFS= read -r -d $'\0' filename; do
+    # Extract filename without path
+    basefilename=$(basename "$filename")
+
+    # Remove any extension and create filenames
+    html_output="${directory}/${basefilename%.*}.html"
+    json_output="${directory}/${basefilename%.*}.json"
+
+
+    # Check if the file is an image (adjust as needed for other file types)
+    if [[ "$filename" == *.jpg || "$filename" == *.jpeg || "$filename" == *.png || "$filename" == *.tiff ]]; then
+        # Execute exiftool for HTML output, handling potential errors
+        exiftool -h "$filename" > "$html_output" || {
+            echo "Error processing '$filename' (HTML): $(exiftool -v --errortxt '$filename')" >&2
+            continue
+        }
+        echo "Processed '$filename', HTML output written to '$html_output'"
+
+        # Execute exiftool for JSON output, handling potential errors
+        exiftool -json "$filename" > "$json_output" || {
+            echo "Error processing '$filename' (JSON): $(exiftool -v --errortxt '$filename')" >&2
+            continue
+        }
+        echo "Processed '$filename', JSON output written to '$json_output'"
+
+    else
+        echo "Skipping non-image file: '$filename'"
+    fi
+  done
+}
+
+# Get the directory from the user (add error handling as needed)
+read -p "Enter the directory containing images: " directory
+
+# Call the function
+process_images "$directory"
+
+# Check the exit status of the function
+if [ $? -ne 0 ]; then
+    echo "Some errors occurred during processing." >&2
+fi
