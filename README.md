@@ -42,6 +42,14 @@ This project aims to encode a hash into the EXIF metadata of an image in a way t
 - Identifies differences and similarities in metadata
 - Usage: `python compare-json.py <file1.json> <file2.json>`
 
+### compare-json-values.py
+- Python script to compare values in two JSON files
+- Finds matching values between files regardless of keys
+- Handles both dictionaries and lists of dictionaries
+- Usage: `python compare-json-values.py <file1.json> <file2.json>`
+
+
+
 ## Project Goals
 
 *   Develop encoding methods that are robust against Facebook's image processing.
