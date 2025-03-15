@@ -1,8 +1,8 @@
 [{
-  "SourceFile": "./added_metadata/facebook-3.jpg",
+  "SourceFile": "added_metadata/facebook-3.jpg",
   "ExifToolVersion": 12.57,
   "FileName": "facebook-3.jpg",
-  "Directory": "./added_metadata",
+  "Directory": "added_metadata",
   "FileSize": "23 kB",
   "FileModifyDate": "2025:03:15 13:48:59+00:00",
   "FileAccessDate": "2025:03:15 13:49:19+00:00",

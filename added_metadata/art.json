@@ -1,8 +1,8 @@
 [{
-  "SourceFile": "./added_metadata/art.png",
+  "SourceFile": "added_metadata/art.png",
   "ExifToolVersion": 12.57,
   "FileName": "art.png",
-  "Directory": "./added_metadata",
+  "Directory": "added_metadata",
   "FileSize": "41 kB",
   "FileModifyDate": "2025:03:15 13:47:44+00:00",
   "FileAccessDate": "2025:03:15 13:47:52+00:00",
